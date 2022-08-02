@@ -10,13 +10,13 @@ class StudInsertController extends Controller
 {
     
     public function index(){
-        return view('stud_create');
+        return view('stud_add');
     }
     public function create(Request $request){
         $rules = [
 			'first_name' => 'required|string|min:3|max:255',
 			'city_name' => 'required|string|min:3|max:255',
-			'email' => 'required|string|email|max:255'
+			'email' => 'required|string|email|max:255|unique:users'
 		];
 		$validator = Validator::make($request->all(),$rules);
 		if ($validator->fails()) {
