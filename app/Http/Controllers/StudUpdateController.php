@@ -1,5 +1,5 @@
 <?php
-class="ezoic-autoinsert-ad ezoic-under_second_paragraph">namespace App\Http\Controllers;
+class= App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;

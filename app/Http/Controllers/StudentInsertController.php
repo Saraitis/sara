@@ -1,22 +1,28 @@
 <?php
+
 namespace App\Http\Controllers;
-use App\StudInsert;
+use App\Http\Controllers\Controller;
+use App\Models\StudInsert;
 use Illuminate\Http\Request;
-use \Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class StudInsertController extends Controller
 {
-    
-    public function index(){
-        return view('stud_add');
+   
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('student.add');
     }
-    public function create(Request $request){
+
+    public function store(Request $request)
+    {
         $rules = [
 			'first_name' => 'required|string|min:3|max:255',
 			'city_name' => 'required|string|min:3|max:255',
-			'email' => 'required|string|email|max:255|unique:users'
+			'email' => 'required|string|email|max:255|unique:student_details'
 		];
 		$validator = Validator::make($request->all(),$rules);
 		if ($validator->fails()) {
