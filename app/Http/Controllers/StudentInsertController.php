@@ -10,8 +10,8 @@ use Illuminate\Validation\Rule;
 class StudInsertController extends Controller
 {
    
-     * @return \Illuminate\Http\Response
-     */
+     return \Illuminate\Http\Response;
+    
     public function index()
     {
         return view('student.add');

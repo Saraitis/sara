@@ -26,3 +26,18 @@ Route::get('role',[
             return view('register');
             });
             Route::post('/user/register',array('uses'=>'UserRegistration@postRegister'));
+            Route::get('/test', ['as'=>'testing',function() {
+               return view('test2');
+               }]);
+               
+               Route::get('redirect',function() {
+               return redirect()->route('testing');
+               });
+               Route::get('rr','RedirectController@index');
+               Route::get('/redirectcontroller',function() {
+               return redirect()->action('RedirectController@index');
+               });      
+               Route::get('/form',function() {
+                  return view('form');
+                  });
+                  Route::get('localization/{locale}','LocalizationController@index');
