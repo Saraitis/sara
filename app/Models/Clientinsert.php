@@ -1,8 +1,19 @@
 <?php
-namespace app\models;
-use Illuminate\Database\Eloquent\Factories\hasFactory;
-use Illuminate\Database\Eloquent\model;
-class ClintInsert extends model
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Employee extends Model
 {
-    use hasFactory;
+    use HasFactory;
+    protected $table = "employees";
+    protected $fillable = ["id", "name", "age", "country"];
+    public $timestamps = false;
+
+    public function file(){
+        return $this->hasMany('App\Models\File', 'employee_id');
+    }
+
 }

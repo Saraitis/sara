@@ -2,22 +2,44 @@
 
 namespace App\Providers;
 
+// use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    var array<class-string, class-string>
-    
+    /**
+     * The model to policy mappings for the application.
+     *
+     * @var array<class-string, class-string>
+     */
     protected $policies = [
-       
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
-    return void
-     
+    /**
+     * Register any authentication / authorization services.
+     *
+     * @return void
+     */
     public function boot()
     {
         $this->registerPolicies();
-ئ
+        //
+
+        // Implicitly grant "Super-Admin" role all permission checks using can()
+        Gate::before(function ($user, $ability) {
+            if ($user->hasRole('Admins')) {
+                return true;
+            }
+        });
+
+        //
     }
 }
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+
+    Terms
+    Privac
